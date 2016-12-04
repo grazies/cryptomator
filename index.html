@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Cryptomator by grazies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Cryptomator</h1>
+      <h2 class="project-tagline">Multi-platform transparent client-side encryption of your files in the cloud</h2>
+      <a href="https://github.com/grazies/cryptomator" class="btn">View on GitHub</a>
+      <a href="https://github.com/grazies/cryptomator/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/grazies/cryptomator/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="cryptomator.png" alt="cryptomator"></p>
+
+<p><a href="https://travis-ci.org/cryptomator/cryptomator"><img src="https://travis-ci.org/cryptomator/cryptomator.svg?branch=master" alt="Build Status"></a>
+<a href="https://scan.coverity.com/projects/cryptomator-cryptomator"><img src="https://scan.coverity.com/projects/cryptomator-cryptomator/badge.svg?flat=1" alt="Coverity Scan Build Status"></a>
+<a href="https://www.codacy.com/app/cryptomator/cryptomator?utm_source=github.com&amp;amp;utm_medium=referral&amp;amp;utm_content=cryptomator/cryptomator&amp;amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/2a0adf3cec6a4143b91035d3924178f1" alt="Codacy Badge"></a>
+<a href="https://coveralls.io/github/cryptomator/cryptomator?branch=master"><img src="https://coveralls.io/repos/github/cryptomator/cryptomator/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://gitter.im/cryptomator/cryptomator?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/cryptomator/cryptomator"></a>
+<a href="http://twitter.com/Cryptomator"><img src="https://img.shields.io/badge/twitter-@Cryptomator-blue.svg?style=flat" alt="Twitter"></a>
+<a href="https://poeditor.com/join/project/bHwbvJmx0E"><img src="https://img.shields.io/badge/POEditor-Help%20Translate-blue.svg?style=flat" alt="POEditor"></a></p>
+
+<p>Multi-platform transparent client-side encryption of your files in the cloud.</p>
+
+<p>Download native binaries of Cryptomator on <a href="https://cryptomator.org/">cryptomator.org</a> or clone and build Cryptomator using Maven (instructions below).</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Works with Dropbox, Google Drive, OneDrive, Nextcloud and any other cloud storage service which synchronizes with a local directory</li>
+<li>Open Source means: No backdoors, control is better than trust</li>
+<li>Client-side: No accounts, no data shared with any online service</li>
+<li>Totally transparent: Just work on the virtual drive as if it were a USB flash drive</li>
+<li>AES encryption with 256-bit key length</li>
+<li>File names get encrypted</li>
+<li>Folder structure gets obfuscated</li>
+<li>Use as many vaults in your Dropbox as you want, each having individual passwords</li>
+</ul>
+
+<h3>
+<a id="privacy" class="anchor" href="#privacy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Privacy</h3>
+
+<ul>
+<li>256-bit keys (unlimited strength policy bundled with native binaries)</li>
+<li>Scrypt key derivation</li>
+<li>Cryptographically secure random numbers for salts, IVs and the masterkey of course</li>
+<li>Sensitive data is wiped from the heap asap</li>
+<li>Lightweight: <a href="https://www.schneier.com/essays/archives/1999/11/a_plea_for_simplicit.html">Complexity kills security</a>
+</li>
+</ul>
+
+<h3>
+<a id="consistency" class="anchor" href="#consistency" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Consistency</h3>
+
+<ul>
+<li>HMAC over file contents to recognize changed ciphertext before decryption</li>
+<li>I/O operations are transactional and atomic, if the filesystems support it</li>
+<li>Each file contains all information needed for decryption (except for the key of course), no common metadata means no <a href="http://en.wikipedia.org/wiki/Single_point_of_failure">SPOF</a>
+</li>
+</ul>
+
+<h3>
+<a id="security-architecture" class="anchor" href="#security-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Security Architecture</h3>
+
+<p>For more information on the security details visit <a href="https://cryptomator.org/architecture/">cryptomator.org</a>.</p>
+
+<h2>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building</h2>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+<li>Java 8 + JCE unlimited strength policy files (needed for 256-bit keys)</li>
+<li>Maven 3</li>
+<li>Optional: OS-dependent build tools for native packaging (see <a href="https://github.com/cryptomator/cryptomator-win">Windows</a>, <a href="https://github.com/cryptomator/cryptomator-osx">OS X</a>, <a href="https://github.com/cryptomator/builder-containers">Linux</a>)</li>
+</ul>
+
+<h3>
+<a id="run-maven" class="anchor" href="#run-maven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Maven</h3>
+
+<pre><code>cd main
+mvn clean install -Prelease
+</code></pre>
+
+<p>An executable jar file will be created inside <code>main/uber-jar/target</code>.</p>
+
+<h2>
+<a id="contributing-to-cryptomator" class="anchor" href="#contributing-to-cryptomator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing to Cryptomator</h2>
+
+<p>Please read our <a href="https://github.com/cryptomator/cryptomator/blob/master/CONTRIBUTING.md">contribution guide</a>, if you would like to report a bug, ask a question or help us with coding.</p>
+
+<h2>
+<a id="code-of-conduct" class="anchor" href="#code-of-conduct" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code of Conduct</h2>
+
+<p>Help us keep Cryptomator open and inclusive. Please read and follow our <a href="https://github.com/cryptomator/cryptomator/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Distributed under the MIT X Consortium license. See the <code>LICENSES/MIT-X-Consortium-License.txt</code> file for more info.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/grazies/cryptomator">Cryptomator</a> is maintained by <a href="https://github.com/grazies">grazies</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
